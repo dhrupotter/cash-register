@@ -29,7 +29,6 @@ function checkBtnClickHandler() {
   var cashGivenValue = Number(cashGivenAmount.value);
   var billAmountValue = Number(billAmount.value);
   if (cashGivenValue < billAmountValue) {
-    console.log("Galti se mistake");
     errorMsg2.innerHTML = `Cash given should be more than Bill Amount!`;
   } else {
     calculateChange(billAmountValue, cashGivenValue);
