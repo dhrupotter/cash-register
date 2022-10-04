@@ -15,8 +15,10 @@ const output = [0, 0, 0, 0, 0, 0, 0, 0];
 nextBtn.addEventListener("click", nextBtnClickHandler);
 
 function nextBtnClickHandler() {
-  if (billAmount.value < 0 || billAmount.value === "") {
+  if (billAmount.value === "") {
     errorMsg.innerHTML = `Please enter bill amount`;
+  } else if (billAmount.value < 0) {
+    errorMsg.innerHTML = `Invalid Bill Amount`;
   } else {
     cashGivenSection.style.display = "block";
     errorMsg.innerHTML = ``;
@@ -27,13 +29,22 @@ checkBtn.addEventListener("click", checkBtnClickHandler);
 
 function checkBtnClickHandler() {
   notesSection.style.display = "block";
-  var cashGivenValue = Number(cashGivenAmount.value);
-  var billAmountValue = Number(billAmount.value);
-  if (cashGivenValue < billAmountValue) {
-    errorMsg2.innerHTML = `Cash given should be more than Bill Amount!`;
+  if (cashGivenAmount.value === "") {
+    errorMsg2.innerHTML = `Please enter cash given amount`;
+    notesSection.style.display = "none";
+  } else if (cashGivenAmount.value < 0) {
+    errorMsg2.innerHTML = `Invalid Cash Given Amount`;
+    notesSection.style.display = "none";
   } else {
-    calculateChange(billAmountValue, cashGivenValue);
-    errorMsg2.innerHTML = ``;
+    var cashGivenValue = Number(cashGivenAmount.value);
+    var billAmountValue = Number(billAmount.value);
+    if (cashGivenValue < billAmountValue) {
+      errorMsg2.innerHTML = `Cash given should be more than Bill Amount!`;
+      notesSection.style.display = "none";
+    } else {
+      calculateChange(billAmountValue, cashGivenValue);
+      errorMsg2.innerHTML = ``;
+    }
   }
 }
 
