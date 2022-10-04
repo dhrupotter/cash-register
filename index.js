@@ -19,6 +19,7 @@ function nextBtnClickHandler() {
     errorMsg.innerHTML = `Please enter bill amount`;
   } else {
     cashGivenSection.style.display = "block";
+    errorMsg.innerHTML = ``;
   }
 }
 
@@ -32,6 +33,7 @@ function checkBtnClickHandler() {
     errorMsg2.innerHTML = `Cash given should be more than Bill Amount!`;
   } else {
     calculateChange(billAmountValue, cashGivenValue);
+    errorMsg2.innerHTML = ``;
   }
 }
 
